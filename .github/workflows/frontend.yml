@@ -35,7 +35,13 @@ jobs:
           context: ./
           platforms: linux/amd64,linux/arm64,linux/arm/v7
           file: ./dockerfile.v1
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
           push: true
           tags: |
             97060/lab:ghfront1
-          
+      - name: Move cache
+        run: |
+          rm -rf /tmp/.buildx-cache
+          mv /tmp/.buildx-cache-new /tmp/.buildx-cache
+      
