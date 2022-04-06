@@ -39,7 +39,7 @@ jobs:
           cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
           push: true
           tags: |
-            97060/lab:ghfront1
+            97060/lab:ghfront1cache
       - name: Move cache
         run: |
           rm -rf /tmp/.buildx-cache
